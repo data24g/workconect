@@ -1,0 +1,27 @@
+# Continuity Ledger
+
+- Goal: Enable web clients to fetch published articles from deployed backend.
+- Constraints/Assumptions:
+    - Backend server running on port 8086.
+    - Frontend admin running on dev server.
+    - Web client needs public API (no auth required) to fetch PUBLISHED articles only.
+    - Admin uses authenticated API to manage all articles.
+- Key decisions:
+    - Created separate PublicArticleController at `/api/articles` for web clients.
+    - Admin API stays at `/api/admin/news` with authentication.
+    - Public API only returns PUBLISHED articles, filters out DRAFT/PENDING.
+    - CORS enabled with origins="*" for public access.
+- State:
+    - Done: 
+        - Backend and frontend servers running.
+        - Analyzed complete article system implementation.
+        - Created PublicArticleController for web client access.
+    - Now: Fixed UI issue where article sidebar/header was obscured by app header.
+    - Next: Test public API endpoints.
+    - Next: Provide integration guide for web client.
+- Open questions: 
+    - None - public API created and ready.
+- Working set:
+    - `d:\Admin_WorkConnect\api\src\main\java\com\hlgtech\api\article\controller\PublicArticleController.java` (NEW)
+    - `d:\Admin_WorkConnect\api\src\main\java\com\hlgtech\api\article\controller\ArticleController.java` (Admin API)
+    - `d:\Admin_WorkConnect\Frontend\pages\NewsManagement.tsx`
